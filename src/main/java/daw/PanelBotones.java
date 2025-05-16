@@ -18,15 +18,26 @@ public class PanelBotones extends JPanel {
 	private void initComponents(){
    	 
     	// Creación de los botones
-    	for (int i=0;i<10;i++){
-        	grupoBotones[i] = new JButton(Integer.toString(i));
-    	}
-    	grupoBotones[10] = new JButton("+");
-    	grupoBotones[11] = new JButton("-");
-    	grupoBotones[12] = new JButton("*");
-    	grupoBotones[13] = new JButton("/");
-    	grupoBotones[14] = new JButton("=");
-		grupoBotones[15] = new JButton("C");
+    	grupoBotones[0] = new JButton("7");
+    	grupoBotones[1] = new JButton("8");
+    	grupoBotones[2] = new JButton("9");
+    	grupoBotones[3] = new JButton("*");
+    	grupoBotones[4] = new JButton("/");
+
+    	grupoBotones[5] = new JButton("4");
+    	grupoBotones[6] = new JButton("5");
+    	grupoBotones[7] = new JButton("6");
+    	grupoBotones[8] = new JButton("+");
+    	grupoBotones[9] = new JButton("-");
+
+    	grupoBotones[10] = new JButton("1");
+    	grupoBotones[11] = new JButton("2");
+    	grupoBotones[12] = new JButton("3");
+    	grupoBotones[13] = new JButton("0");
+    	
+		
+		grupoBotones[14] = new JButton("C");
+		grupoBotones[15] = new JButton("=");
    	
 // Establecemos el layout
     	this.setLayout (new GridLayout (4,4));
