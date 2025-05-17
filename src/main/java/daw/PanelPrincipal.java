@@ -3,15 +3,11 @@ package daw;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-/**
- * @author Juan Carlos Fernández Vico
- */
 
 public class PanelPrincipal extends JPanel {
 
