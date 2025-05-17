@@ -3,6 +3,7 @@ package daw;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -19,12 +20,13 @@ public class PanelPrincipal extends JPanel {
 	private JTextArea areaTexto;
 	// Podriamos hacer una calculadora para hacer operaciones de solo 2, pero
 	// quien seria yo si no me complico la vida?
-	private String operacion;
-
+	private String operacion; // para hacer operaciones con el ultimo resultado
+	private boolean flagOperacion;
 	// Constructor
 	public PanelPrincipal() {
 		initComponents();
 		operacion = ""; // No hay operaciones en la calculadora
+		flagOperacion = false;
 	}
 
 	// Se inicializan los componentes gráficos y se colocan en el panel
@@ -59,11 +61,18 @@ public class PanelPrincipal extends JPanel {
 	}
 
 	private void manejarNumero(String numero) {
+		if (flagOperacion) {
+			limpiar();
+		}
 		operacion += numero;
 		actualizarPantalla(numero);
+
 	}
 
 	private void manejarOperador(String operador) {
+		if (flagOperacion) {
+			flagOperacion = false;
+		}
 		operacion += " " + operador + " ";
 		actualizarPantalla(operador);
 	}
@@ -76,7 +85,7 @@ public class PanelPrincipal extends JPanel {
 		// multiplicaciones y divisiones
 		// y la segunda para realizar las sumas y restas
 
-		String[] operacionArray1 = operacion.split(" ");
+		String[] operacionArray1 = operacion.split("\s+");
 		List<String> operacionArray2 = new ArrayList<>();
 
 		// flag para saber si se ha realizado una operacion de multiplicacion o division
@@ -127,11 +136,15 @@ public class PanelPrincipal extends JPanel {
 		}
 		String resultado = String.format("%.2f", operando1);
 		areaTexto.setText(resultado);
+		flagOperacion = true;
+		operacion = String.valueOf(operando1); // de esta manera se puede hacer operaciones con el
+												// ultimo resultado y todos sus decimales
 	}
 
 	private void limpiar() {
 		operacion = "";
 		areaTexto.setText("");
+		flagOperacion = false;
 	}
 
 	private void actualizarPantalla(String texto) {
